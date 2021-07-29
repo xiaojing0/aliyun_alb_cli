@@ -1,0 +1,70 @@
+{
+  "name": "xj0_alb_cli",
+  "description": "校精灵阿里云ALB命令行客户端",
+  "version": "0.1.0",
+  "author": "silence",
+  "bin": {
+    "xj0_alb_cli": "./bin/run"
+  },
+  "bugs": "https://github.com/silenceu/xj0_alb_cli/issues",
+  "devDependencies": {
+    "@oclif/dev-cli": "^1.26.0",
+    "@oclif/test": "^1.2.8",
+    "@types/chai": "^4.2.21",
+    "@types/inquirer": "^7.3.3",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.17.60",
+    "chai": "^4.3.4",
+    "eslint": "^5.16.0",
+    "eslint-config-oclif": "^3.1.0",
+    "eslint-config-oclif-typescript": "^0.1.0",
+    "globby": "^10.0.2",
+    "mocha": "^9.0.3",
+    "nyc": "^14.1.1",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.10"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/silenceu/xj0_alb_cli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "xj0_alb_cli",
+    "plugins": [
+      "@oclif/plugin-help"
+    ]
+  },
+  "repository": "silenceu/xj0_alb_cli",
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "posttest": "eslint . --ext .ts --config .eslintrc",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\"",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@alicloud/alb20200616": "^1.0.1",
+    "@alicloud/openapi-client": "^0.3.3",
+    "@oclif/command": "^1.8.0",
+    "@oclif/config": "^1.17.0",
+    "@oclif/plugin-help": "^3.2.2",
+    "cli-ux": "^5.6.3",
+    "colors": "^1.4.0",
+    "inquirer": "^6.5.2",
+    "lodash": "^4.17.21",
+    "tslib": "^1.14.1"
+  }
+}
