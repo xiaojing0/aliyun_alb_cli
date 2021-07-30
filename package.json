@@ -1,12 +1,12 @@
 {
-  "name": "@xj0/alb_cli",
+  "name": "@xj0/aliyun_alb_cli",
   "description": "校精灵阿里云ALB命令行客户端",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "silence",
   "bin": {
-    "xj0_alb_cli": "./bin/run"
+    "alb_cli": "./bin/run"
   },
-  "bugs": "https://github.com/silenceu/xj0_alb_cli/issues",
+  "bugs": "https://github.com/xiaojing0/aliyun_alb_cli/issues",
   "devDependencies": {
     "@oclif/dev-cli": "^1.26.0",
     "@oclif/test": "^1.2.8",
@@ -33,20 +33,20 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/silenceu/xj0_alb_cli",
+  "homepage": "https://github.com/xiaojing0/aliyun_alb_cli",
   "keywords": [
-    "oclif"
+    "aliyun_alb_cli", "aliyun_alb"
   ],
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "xj0_alb_cli",
+    "bin": "aliyun_alb_cli",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "silenceu/xj0_alb_cli",
+  "repository": "xiaojing0/aliyun_alb_cli",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
