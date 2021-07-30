@@ -1,6 +1,7 @@
 import AlbClient from '../alb-client'
 import {Command, flags} from '@oclif/command'
-import * as Config from '../config.json'
+import * as fs from 'fs'
+import * as path from 'path'
 import {find, forEach} from 'lodash'
 import cli from 'cli-ux'
 import colors = require('colors')
@@ -21,11 +22,14 @@ export default class SSW extends Command {
   static args = []
 
   async run() {
+    this.log(this.config.configDir)
+    const ConfigFileBuffer = await fs.readFileSync(path.join(this.config.configDir, 'config.json'))
+    const Config = JSON.parse(ConfigFileBuffer.toString())
     const {flags} = this.parse(SSW)
     const serverGroupId: string = flags.serverGroupId || Config.serverGroupId
     this.log(serverGroupId)
     try {
-      const albClient = new AlbClient()
+      const albClient = new AlbClient(Config.accessEndpoint, Config.accessKeyId, Config.accessKeySecret)
       const serverGroupServers = await albClient.getServerGroupServers(serverGroupId)
       if (!serverGroupServers || serverGroupServers.length <= 0) {
         this.error('指定的服务器不存在')
@@ -74,27 +78,24 @@ export default class SSW extends Command {
       setWeightProgressBar.start(100, 0)
       let percentage = 0
       await new Promise((resolve => {
-        let isQuerying = false
         const timer = setInterval(async () => {
           percentage++
           setWeightProgressBar.update(percentage)
-          if (percentage >= 90 && percentage <= 100 && isQuerying === false) {
-            isQuerying = true
+          if (percentage === 100) {
+            clearInterval(timer)
             const serverGroupServers = await albClient.getServerGroupServers(serverGroupId)
             const updatedServer = find(serverGroupServers, serverGroupServer => {
               return serverGroupServer.serverIp === updateServer.serverIp && serverGroupServer.port === updateServer.serverPort && serverGroupServer.weight === weight
             })
-            isQuerying = false
             if (updatedServer) {
-              clearInterval(timer)
               setWeightProgressBar.stop()
               this.log(`服务${colors.green(updatedServer.description || '--')}(${updatedServer.serverIp}:${updatedServer.port})设置权重为${colors.green(weight)}成功`)
               resolve({})
             }
           }
-        }, 50)
+        }, 100)
       }))
-    } catch (error: any) {
+    } catch (error) {
       this.error(`设置服务器权重失败: ${colors.red(error.message)}`)
     }
   }

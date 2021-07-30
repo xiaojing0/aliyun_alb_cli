@@ -4,13 +4,15 @@ import AlbBaseClient, {
   UpdateServerGroupServersAttributeRequestServers,
 } from '@alicloud/alb20200616'
 import * as OpenApi from '@alicloud/openapi-client'
-import {accessEndpoint, accessKeyId, accessKeySecret} from './config.json'
 
 export default class AlbClient extends AlbBaseClient {
   /**
    * @description 初始化alb client
+   * @param {string} accessEndpoint 节点
+   * @param {string} accessKeyId 阿里云keyId
+   * @param {string} accessKeySecret 阿里云KeySecret
    */
-  constructor() {
+  constructor(accessEndpoint: string, accessKeyId: string, accessKeySecret: string) {
     const config = new OpenApi.Config({
       accessKeyId: accessKeyId,
       accessKeySecret: accessKeySecret,

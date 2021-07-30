@@ -1,5 +1,5 @@
 {
-  "name": "xj0_alb_cli",
+  "name": "@backend/xj0_alb_cli",
   "description": "校精灵阿里云ALB命令行客户端",
   "version": "0.1.0",
   "author": "silence",

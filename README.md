@@ -15,11 +15,11 @@ xj0_alb_cli
 # Usage
 <!-- usage -->
 ```sh-session
-$ npm install -g xj0_alb_cli
+$ npm install -g @backend/xj0_alb_cli
 $ xj0_alb_cli COMMAND
 running command...
 $ xj0_alb_cli (-v|--version|version)
-xj0_alb_cli/0.1.0 darwin-x64 node-v14.17.0
+@backend/xj0_alb_cli/0.1.0 darwin-x64 node-v12.22.4
 $ xj0_alb_cli --help [COMMAND]
 USAGE
   $ xj0_alb_cli COMMAND
@@ -28,28 +28,8 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`xj0_alb_cli hello [FILE]`](#xj0_alb_cli-hello-file)
 * [`xj0_alb_cli help [COMMAND]`](#xj0_alb_cli-help-command)
-
-## `xj0_alb_cli hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ xj0_alb_cli hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ xj0_alb_cli hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/silenceu/xj0_alb_cli/blob/v0.1.0/src/commands/hello.ts)_
+* [`xj0_alb_cli ssw`](#xj0_alb_cli-ssw)
 
 ## `xj0_alb_cli help [COMMAND]`
 
@@ -67,4 +47,22 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+
+## `xj0_alb_cli ssw`
+
+设置服务器组的某个服务器的权重
+
+```
+USAGE
+  $ xj0_alb_cli ssw
+
+OPTIONS
+  -g, --serverGroupId=serverGroupId  服务器组id
+  -h, --help                         show CLI help
+
+EXAMPLE
+  $ xj0_alb_cli ssw -g SERVER_GROUP_ID -s SERVER_ID [-t SERVER_TYPE] [-p SERVER_PORT] -w WEIGHT
+```
+
+_See code: [src/commands/ssw.ts](https://github.com/silenceu/xj0_alb_cli/blob/v0.1.0/src/commands/ssw.ts)_
 <!-- commandsstop -->
