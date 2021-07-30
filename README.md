@@ -1,4 +1,4 @@
-xj0_alb_cli
+aliyun_alb_cli
 ===========
 
 校精灵阿里云ALB命令行客户端
@@ -6,7 +6,7 @@ xj0_alb_cli
 [![alb_cli](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://www.npmjs.com/package/@xj0/alb_cli)
 [![Version](https://img.shields.io/npm/v/@xj0/alb_cli)](https://npmjs.com/package/@xj0/alb_cli)
 [![Downloads/week](https://img.shields.io/npm/dt/@xj0/alb_cli)](https://npmjs.org/package/@xj0/alb_cli)
-[![License](https://img.shields.io/npm/l/@xj0/alb_cli)](https://github.com/silenceu/xj0_alb_cli/blob/master/package.json)
+[![License](https://img.shields.io/npm/l/@xj0/alb_cli)](https://github.com/xiaojing0/aliyun_alb_cli/blob/master/package.json)
 
 <!-- toc -->
 * [Usage](#usage)
@@ -20,7 +20,7 @@ $ npm install -g @xj0/aliyun_alb_cli
 $ aliyun_alb_cli COMMAND
 running command...
 $ aliyun_alb_cli (-v|--version|version)
-@xj0/aliyun_alb_cli/0.1.0 darwin-x64 node-v14.17.0
+@xj0/aliyun_alb_cli/0.2.0 darwin-x64 node-v14.17.0
 $ aliyun_alb_cli --help [COMMAND]
 USAGE
   $ aliyun_alb_cli COMMAND
@@ -76,8 +76,8 @@ OPTIONS
   -h, --help                         show CLI help
 
 EXAMPLE
-  $ xj0_alb_cli ssw -g SERVER_GROUP_ID
+  $ aliyun_alb_cli ssw -g SERVER_GROUP_ID
 ```
 
-_See code: [src/commands/ssw.ts](https://github.com/xiaojing0/aliyun_alb_cli/blob/v0.1.0/src/commands/ssw.ts)_
+_See code: [src/commands/ssw.ts](https://github.com/xiaojing0/aliyun_alb_cli/blob/v0.2.0/src/commands/ssw.ts)_
 <!-- commandsstop -->

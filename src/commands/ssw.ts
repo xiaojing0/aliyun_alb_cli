@@ -11,7 +11,7 @@ export default class SSW extends Command {
   static description = '设置服务器组的某个服务器的权重'
 
   static examples = [
-    '$ xj0_alb_cli ssw -g SERVER_GROUP_ID',
+    '$ aliyun_alb_cli ssw -g SERVER_GROUP_ID',
   ]
 
   static flags = {
