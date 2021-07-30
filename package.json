@@ -1,10 +1,10 @@
 {
   "name": "@xj0/aliyun_alb_cli",
   "description": "校精灵阿里云ALB命令行客户端",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": "silence",
   "bin": {
-    "alb_cli": "./bin/run"
+    "aliyun_alb_cli": "./bin/run"
   },
   "bugs": "https://github.com/xiaojing0/aliyun_alb_cli/issues",
   "devDependencies": {
