@@ -27,12 +27,16 @@ export default class SSW extends Command {
     const Config = JSON.parse(ConfigFileBuffer.toString())
     const {flags} = this.parse(SSW)
     const serverGroupId: string = flags.serverGroupId || Config.serverGroupId
-    this.log(serverGroupId)
     try {
       const albClient = new AlbClient(Config.accessEndpoint, Config.accessKeyId, Config.accessKeySecret)
+      const serverGroup = await albClient.getServerGroup(serverGroupId)
+      if (!serverGroup) {
+        this.error('指定的服务器组不存在')
+      }
+      this.log(`当前服务器组: ${colors.green(serverGroup?.serverGroupName || '??')}`)
       const serverGroupServers = await albClient.getServerGroupServers(serverGroupId)
       if (!serverGroupServers || serverGroupServers.length <= 0) {
-        this.error('指定的服务器不存在')
+        this.error('服务器组不存在任何服务器')
       }
       forEach(serverGroupServers, serverGroupServer => {
         this.log(`服务${colors.green(serverGroupServer.description || '--')}(${serverGroupServer.serverIp}:${serverGroupServer.port}), 权重值[${colors.green(String(serverGroupServer.weight))}]`)

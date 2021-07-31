@@ -1,9 +1,15 @@
 import AlbBaseClient, {
-  ListServerGroupServersRequest, ListServerGroupServersResponse, ListServerGroupServersResponseBodyServers,
+  ListServerGroupServersRequest,
+  ListServerGroupServersResponse,
+  ListServerGroupServersResponseBodyServers,
+  ListServerGroupsRequest,
+  ListServerGroupsResponse,
   UpdateServerGroupServersAttributeRequest,
   UpdateServerGroupServersAttributeRequestServers,
 } from '@alicloud/alb20200616'
 import * as OpenApi from '@alicloud/openapi-client'
+import * as _ from 'lodash'
+import {ListServerGroupsResponseBodyServerGroups} from '@alicloud/alb20200616/src/client'
 
 export default class AlbClient extends AlbBaseClient {
   /**
@@ -26,11 +32,11 @@ export default class AlbClient extends AlbBaseClient {
    * @param {string} serverGroupId 服务器组id
    */
   async getServerGroupServers(serverGroupId: string): Promise<ListServerGroupServersResponseBodyServers[]|undefined> {
-    const serverGroupServersReq = new ListServerGroupServersRequest({
+    const serverGroupServersRequest = new ListServerGroupServersRequest({
       serverGroupId,
     })
-    const serverGroupInfo: ListServerGroupServersResponse = await this.listServerGroupServers(serverGroupServersReq)
-    return serverGroupInfo.body.servers
+    const serverGroupServersResponse: ListServerGroupServersResponse = await this.listServerGroupServers(serverGroupServersRequest)
+    return serverGroupServersResponse.body.servers
   }
 
   /**
@@ -54,5 +60,17 @@ export default class AlbClient extends AlbBaseClient {
       ],
     })
     await this.updateServerGroupServersAttribute(updateServerGroupServersAttributeRequest)
+  }
+
+  /**
+   * @description 获取服务器组信息
+   * @param {string} serverGroupId 服务器组id
+   */
+  async getServerGroup(serverGroupId: string): Promise<ListServerGroupsResponseBodyServerGroups|undefined> {
+    const serverGroupsRequest = new ListServerGroupsRequest({
+      serverGroupIds: [serverGroupId],
+    })
+    const serverGroupsResponse: ListServerGroupsResponse = await this.listServerGroups(serverGroupsRequest)
+    return _.get(serverGroupsResponse, 'body.serverGroups.0')
   }
 }

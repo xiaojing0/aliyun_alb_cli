@@ -1,7 +1,7 @@
 {
   "name": "@xj0/aliyun_alb_cli",
   "description": "校精灵阿里云ALB命令行客户端",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "silence",
   "bin": {
     "aliyun_alb_cli": "./bin/run"
